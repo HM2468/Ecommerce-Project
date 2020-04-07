@@ -1,0 +1,4 @@
+class Goods < ApplicationRecord
+    
+end
+
