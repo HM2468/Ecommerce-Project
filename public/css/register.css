@@ -1,0 +1,52 @@
+#register-main{
+    width:900px;
+    min-height:600px;
+    margin:auto;
+    border:1px rgb(248,248,248) solid;
+}
+
+#register-form{
+    width:527px;
+    height:515px;
+    margin:auto;
+    margin-top:50px;
+    background: rgb(255,255,255);
+    padding-top:40px;
+}
+
+#register-form h1{
+    font-size:24px;
+    font-style:italic;
+    font-weight: normal;
+    text-align:center;
+    margin-bottom:20px;
+}
+.reg-info{
+    width:370px;
+    margin:auto;
+    margin-bottom:5px;
+    color:rgb(71,71,71);
+    font-size:14px;
+}
+
+.reg-text{
+    width:370px;
+    height:40px;
+    margin:auto;
+    display:block;
+    margin-bottom:7px;
+    padding-left:8px;
+    font-size:14px;
+}
+
+#reg-submit{
+    display:block;
+    border:none;
+    width:370px;
+    height:40px;
+    margin:auto;
+    color:white;
+    margin-top:30px;
+    background:rgb(44,112,214);
+}
+

@@ -1,0 +1,110 @@
+#home-header{
+    width:900px;
+    height:88px;
+    margin:auto;
+    background:rgb(44, 112, 214);
+    position:relative;
+}
+
+#logo-text{
+    display:block;
+    position: absolute;
+    top:0px;
+    left:20px;
+    height:60px;
+    line-height:60px;
+    font-size:20px;
+    font-weight:bold;
+    color:white;
+}
+
+#search-words{
+    position: absolute;
+    top:25px;
+    left:250px;
+    border:none;
+    width:300px;
+    height:30px;
+    font-size:12px;
+    line-height:30px;
+    background:white;
+    padding-left:8px;
+    padding-right:35px;
+}
+
+#search-btn{
+    position: absolute;
+    top:24px;
+    left:520px;
+    border:none;
+    width:30px;
+    height:30px;
+    font-size:14px;
+    background:url("/images/icons/search.png") 50% 50% no-repeat;
+    background-size: 24px;
+}
+
+.login-status{
+    position:absolute;
+    top:28px;
+    left:620px;
+    height:30px;
+    line-height:30px;
+    padding:0px 5px;
+}
+
+#login-user{
+    display:none;
+}
+
+.enter-text{
+    display:block;
+    color:white;
+    font-size:14px;
+    float:left;
+    margin-right:8px;
+}
+.enter-text:hover{
+    color:rgb(177, 179, 182)
+}
+.item-bar{
+    color:rgb(233,233,233);
+}
+
+
+
+#cart-icon{
+    position:absolute;
+    width:32px;
+    height:32px;
+    top:28px;
+    left:800px;
+    background:url("/images/icons/cart.png") no-repeat;
+    background-size:32px 32px;
+}
+
+#cart-text{
+    position:absolute;
+    height:30px;
+    color:white;
+    top:62px;
+    left:807px;
+    font-size:12px;
+}
+
+.main-box{
+    width:900px;
+    margin:auto;
+    border:1px rgb(248,248,248) solid;
+}
+
+
+
+
+
+
+
+
+
+
+

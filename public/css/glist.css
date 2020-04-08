@@ -1,0 +1,210 @@
+.goods-box{
+    width:724px;
+    min-height:50px;
+    margin:auto;
+    margin-top:60px;
+}
+
+.table-header{
+    width:722px;
+    height:50px;
+    font-size:14px;
+    color:rgb(60,60,60);
+    background:rgb(220,220,220);
+}
+
+.list-header{
+    height:50px;
+    display:block;
+    font-size:14px;
+    line-height:50px;
+    color:rgb(60,60,60);
+    float:left;
+    text-align:right;
+}
+
+.empty-goods-info{
+    width:724px;
+    min-height:50px;
+    position:relative;
+    display:none;
+}
+.empty-goods-icon{
+    width:120px;
+    height:120;
+    position:absolute;
+    top:65px;
+    left:75px;
+}
+.empty-goods-text{
+    position:absolute;
+    width:365px;
+    height:80px;
+    left:270px;
+    top:100px;
+    font-size:15px;
+    color:rgb(60,60,60);
+}
+
+.header-product{
+    width:300px;
+}
+
+.header-col-price{
+    width:125px;
+}
+.header-col-num{
+    width:125px;
+}
+.header-col-total{
+    width:125px;
+}
+.col-tickbox{
+    width:45px;
+    height:60px;
+}
+.good-tick{
+    width:12px;
+    height:12px;
+    display:block;
+    border:1px rgb(197,197,197) solid;
+    margin-left:20px;
+    background-size:12px 12px;
+    background-repeat:no-repeat;
+    background-position: 50% 50%;
+    cursor: pointer;
+}
+
+.goods-list{
+    width:722px;
+    min-height:200px;
+}
+
+.list-good-item{
+    width:722px;
+    height:130px;
+    border:1px rgb(204,204,204) solid;
+    margin-bottom:30px;
+    padding-top:25px;
+    background:rgb(255,255,255);
+}
+
+
+.list-good{
+    display:block;
+    float:left;
+    text-align:center;
+}
+
+
+
+.col-cover{
+    width:85px;
+    height:85px;
+}
+.col-product{
+    width:215px;
+    height:30px;
+    font-size:11px;
+    line-height:15px;
+    overflow-y: hidden;
+    padding:0px 3px;
+}
+.col-product:hover{
+    color:red;
+    text-decoration:underline;
+}
+.col-price{
+    width:125px;
+    height:30px;
+    font-size:11px;
+    line-height:15px;
+    font-weight: bold;
+}
+.col-num{
+    width:125px;
+    height:24px;
+    font-size:11px;
+    line-height:12px;
+}
+.col-total{
+    width:125px;
+    height:24px;
+    font-size:11px;
+    line-height:12px;
+    font-weight: bold;
+}
+
+.good-tick{
+    width:12px;
+    height:12px;
+    display:block;
+    border:1px rgb(197,197,197) solid;
+    margin-left:20px;
+    background-size:12px 12px;
+    background-repeat:no-repeat;
+    background-position: 50% 50%;
+    cursor: pointer;
+}
+
+.summary-unit{
+    display:block;
+    float:left;
+    font-size:14px;
+}
+.goods-tick-all{
+    margin-top:20px;
+}
+.goods-all-text{
+    margin-left:10px;
+}
+.goods-delete-text{
+    margin-left:15px;
+    text-decoration:underline;
+    margin-right:200px;
+}
+.goods-delete-text:hover{
+    color:red;
+}
+.goods-counts-text{
+    margin-right:5px;
+}
+
+.goods-counts-val{
+    margin-right:18px;
+    font-weight: bold;
+}
+
+.goods-fee-text{
+    margin-right:3px;
+}
+.goods-fee-val{
+    margin-right:18px;
+    font-weight: bold;
+}
+.goods-commit{
+    position:absolute;
+    top:0px;
+    right:0px;
+    width:120px;
+    height:50px;
+    line-height:50px;
+    color:white;
+    font-size:18px;
+    background:rgb(176,176,176);
+    text-align:center;
+}
+.goods-commit:hover{
+    background:rgb(255,68,0);
+}
+
+.goods-summary{
+    width:722px;
+    height:50px;
+    line-height:50px;
+    background:rgb(220,220,220);
+    margin-bottom:50px;
+    color:rgb(60,60,60);
+    position:relative;
+}
+

@@ -1,0 +1,95 @@
+<script src="/javascripts/glist.js"></script>
+<script src="/javascripts/order.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/glist.css">
+<link rel="stylesheet" type="text/css" href="/css/order.css">
+
+<%= render "/home/nav"%>
+
+<div id="order-main">
+    <div id="order-address-box" class="order-box">
+        <h1 class="order-box-title">Mail Adress</h1>
+        <p>
+            <span class="order-text-tag">Last name:</span>
+            <input id="order-last-name" class="order-address-common" type="text" placeholder="Enter your last name"/>
+        </p>
+        <p>
+            <span class="order-text-tag">First name:</span>
+            <input id="order-first-name" class="order-address-common" type="text" placeholder="Enter your first name"/>
+        </p>
+        <p>
+            <span class="order-text-tag">Detail:</span>
+            <textarea id="order-address-detail" type="textarea" placeholder="Enter your detailed address"></textarea>
+        </p>
+        <p>
+            <span class="order-text-tag">Zip Code:</span>
+            <input id="order-zip-code" class="order-address-common" type="text" placeholder="Enter your zipcode"/>
+        </p>
+        <p>
+            <span class="order-text-tag">Email:</span>
+            <input id="order-email" class="order-address-common" type="text" placeholder="Enter your email"/>
+        </p>
+    </div>
+    <div class="goods-box">
+        <div class="table-header">
+            <span class="list-header header-product">product</span>
+            <span class="list-header header-col-price">price</span>
+            <span class="list-header header-col-num">num</span>
+            <span class="list-header header-col-total">total</span>
+        </div>
+        <div class="empty-goods-info">
+            <img src="/images/icons/empty-cart.png" class="empty-cart-icon"/>
+            <p class="empty-goods-text">Your cart is empty, enjoy your shopping now!</p>
+        </div>
+        <div class="goods-list">
+            <!--
+                content format is similar to goods list in cart page
+            -->
+        </div>
+        <div class="goods-summary plain-summary">
+            <span class="goods-counts-text summary-unit">counts:</span>
+            <span class="goods-counts-val summary-unit pink-color">0</span>
+            <span class="goods-fee-text summary-unit">total money:</span>
+            <span class="goods-fee-symbol summary-unit pink-color">¥</span>
+            <span class="goods-fee-val summary-unit pink-color">0</span>
+            <span class="goods-commit summary-unit button">commit</span>
+        </div>
+    </div>
+</div>
+
+<%= render "/home/footer"%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

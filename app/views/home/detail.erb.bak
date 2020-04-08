@@ -1,0 +1,67 @@
+
+<%= javascript_include_tag "jquery-3.4.1.min.js" %>
+<%= javascript_include_tag "index.js" %>
+<%= stylesheet_link_tag "index.css" %>
+<script src="javascripts/jquery-3.4.1.min.js"></script>
+<script src="javascripts/detail.js"></script>
+
+<div id="good-header">
+    <div id="good-title-wrap">
+        <h1 id="good-title">Phone Stars</h1>
+    </div>
+</div>
+<div id="good-main">
+    <div id="good-detail-img-wrap">
+        <!--
+            <img id="good-img" src="images/img_good/O1CN01aaKDIz1qZctlUDK2F_!!2202135510.jpg"/>
+            -->
+    </div>
+    <div id="good-basic-text">
+        <p id="good-name2">good name</p>
+        <p id="good-price-wrap">Price ¥<span id="good-price-val">5000<span></p>
+        <p id="buy-quantity-wrap"><span id="buy-quantity-sub" class="count-box button">-</span><span id="buy-quantity" class="quantity-box">1</span><span id="buy-quantity-add", class="count-box button">+</span></p>
+        <p class="clear"></p>
+        <p id="buy-action-wrap"><span id="buy-now" class="button-box button">BUY NOW</span><span id="add-cart" class="button-box button">ADD TO CART</span></p>
+    </div>
+    <div class="clear"></div>
+    <div id="good-detail-wrap">
+        <div id="detail-tabs">
+            <span tar="good-desc" class="tabs">Detail</span>
+            <span tar="good-configuration" class="tabs">Configuration</span>
+            <span tar="good-reviews" class="tabs">Reviews</span>
+        <div>
+        <div class="clear"></div>
+        <div id="detail-box-wrap">
+            <div id="good-desc" class="detail-box">
+                <div id="good-desc-content"></div>
+            </div>
+            <div id="good-configuration" class="detail-box">
+                <div id="good-configuration-content">
+                </div>
+            </div>
+            <div id="good-reviews" class="detail-box">
+                <div id="good-reviews-content">This function is not open yet</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

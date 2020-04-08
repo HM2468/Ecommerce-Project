@@ -1,0 +1,34 @@
+<%= include_gon %>
+
+<script src="/javascripts/jquery-3.4.1.min.js"></script>
+<script src="/javascripts/jquery.cookie.js"></script>
+<script src="/javascripts/main.js"></script>
+<script src="/javascripts/search_page.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/index.css">
+<link rel="stylesheet" type="text/css" href="/css/main.css">
+<link rel="stylesheet" type="text/css" href="/css/search.css">
+
+
+
+<div id="home-header">
+    <a href="/"><span id="logo-text">Phone Star</span></a>
+    <form method="get", action="/good/search_page">
+        <input id="search-words" name="keywords"/>
+        <input id="search-btn" class="button" type="submit" value=""/>
+    </form>
+    <div id="login-reg" class="login-status">
+        <a href="/user/login_page"><span id="login-enter" class="enter-text button">sign in</span></a>
+        <span class="enter-text item-bar">|</span>
+        <a href="/user/register_page"><span id="reg-enter" class="enter-text button">sign up</span></a>
+    </div>
+    <div id="login-user" class="login-status">
+        <a href=""><span id="curuser" class="enter-text button">username</span></a>
+        <span class="enter-text item-bar">|</span>
+        <a href=""><span id="logout" class="enter-text button">Logout</span></a>
+    </div>
+    <div id="cart-icon"></div>
+    <span id="cart-text">cart</span>
+</div>
+
+<%= yield %>
+

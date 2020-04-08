@@ -1,0 +1,62 @@
+#records-main{
+    min-height:500px;
+    background: white;
+}
+#records-table{
+    width:745px;
+    min-height:500px;
+    margin:auto;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+#records-table span{
+    display:block;
+    float:left;
+}
+#records-header{
+    height:40px;
+    line-height: 40px;
+    color:rgb(50,50,50);
+    font-weight: bold;
+    font-size:14px;
+    text-align: center;
+}
+#records-header span{
+    height:40px;
+    background: rgb(200,200,200);
+    margin-right:1px;
+    padding-left:12px;
+}
+#records-list{
+    min-height:500px;
+    line-height: 30px;
+    color:rgb(70,70,70);
+}
+#records-list span{
+    height:30px;
+    background: rgb(240,240,240);
+    margin-right:1px;
+    padding-left:12px;
+}
+.records-row{
+    height:30px;
+    font-size:14px;
+    margin-bottom:1px;
+}
+.col-ip{
+    width:140px;
+}
+.col-time{
+    width:200px;
+}
+.col-path{
+    width:400px;
+}
+
+
+
+
+
+
+
+
