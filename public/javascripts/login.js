@@ -1,6 +1,12 @@
 
 $(function(){
+
     $("#login-submit").click(function(data, status){
+        var res = checkLoginForm();
+        if(res != ""){
+            alert(res);
+            return;
+        }
         var param = {username:$("#username").val(), password:$("#password").val()};
         console.log("参数信息", param)
         $.post("/user/login", param, function(data, status){
@@ -17,6 +23,16 @@ $(function(){
             window.location.href="/";  
         })
     })
+
+    function checkLoginForm(){
+        if($("#username").val() == ""){
+            return "username can't be null!";
+        }
+        if($("#password").val() == ""){
+            return "password can't be null!";
+        }
+        return "";
+    }
 })
 
 

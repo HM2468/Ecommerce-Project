@@ -1,33 +1,35 @@
+<script src="/javascripts/check.js"></script>
 <script src="/javascripts/glist.js"></script>
 <script src="/javascripts/order.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/glist.css">
 <link rel="stylesheet" type="text/css" href="/css/order.css">
+<link rel="stylesheet" type="text/css" href="/css/check.css">
 
 <%= render "/home/nav"%>
 
 <div id="order-main">
     <div id="order-address-box" class="order-box">
         <h1 class="order-box-title">Mail Adress</h1>
-        <p>
-            <span class="order-text-tag">Last name:</span>
+        <div>
+            <p class="order-text-tag"><span>Last name:</span><span id="last-name-error" class="input-error-msg"></span></p>
             <input id="order-last-name" class="order-address-common" type="text" placeholder="Enter your last name"/>
-        </p>
-        <p>
-            <span class="order-text-tag">First name:</span>
+        </div>
+        <div>
+            <p class="order-text-tag"><span>First name:</span><span id="first-name-error" class="input-error-msg"></span></p>
             <input id="order-first-name" class="order-address-common" type="text" placeholder="Enter your first name"/>
-        </p>
-        <p>
-            <span class="order-text-tag">Detail:</span>
+        </div>
+        <div>
+            <p class="order-text-tag"><span>Detail:</span><span id="address-detail-error" class="input-error-msg"></span></p>
             <textarea id="order-address-detail" type="textarea" placeholder="Enter your detailed address"></textarea>
-        </p>
-        <p>
-            <span class="order-text-tag">Zip Code:</span>
+        </div>
+        <div>
+            <p class="order-text-tag"><span>Zip Code:</span><span id="zip-code-error" class="input-error-msg"></span></p>
             <input id="order-zip-code" class="order-address-common" type="text" placeholder="Enter your zipcode"/>
-        </p>
-        <p>
-            <span class="order-text-tag">Email:</span>
+        </div>
+        <div>
+            <p class="order-text-tag"><span>Email:</span><span id="address-email-error" class="input-error-msg"></span></p>
             <input id="order-email" class="order-address-common" type="text" placeholder="Enter your email"/>
-        </p>
+        </div>
     </div>
     <div class="goods-box">
         <div class="table-header">

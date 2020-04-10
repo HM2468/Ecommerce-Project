@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :record_visit
 
-
     def goods_basic(ids)
         if ids.length == 0
             return []
@@ -35,6 +34,19 @@ class ApplicationController < ActionController::Base
 
     def log_in?
         !!session[:user_id]
+    end
+
+    def check_input(name, str, reg, maxlen=30, minlen=0)
+        if reg && !(str =~ reg)
+            return name + " format is incorrect!";
+        end
+        if str.length > maxlen
+            return name + " length can't exceed " + maxlen.to_s;
+        end
+        if str.length < minlen
+            return name + " length cant't be less than "+minlen.to_s;
+        end
+        return "";
     end
 
     private

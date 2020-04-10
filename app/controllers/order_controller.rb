@@ -81,6 +81,9 @@ class OrderController < ApplicationController
         saveres = !!record.save
         if !saveres
             puts "save order failed, " + msg
+        elsif
+            UserMailer.order_email(lastname, firstname, order_id, total, email).deliver_now #deliver_later
+            #send_order_email(lastname, firstname, order_id, total)
         end
         return saveres
     end
@@ -134,19 +137,6 @@ class OrderController < ApplicationController
         if(user_id)
             Cart.where("user_id = #{user_id} AND good_id IN (#{ids.join(',')})").destroy_all
         end
-        #if user is not logged in, let the client handle the cookie cart
-=begin
-        elsif
-            cart = JSON.parse(cookies[:cart])
-            for i in cart.length-1..0
-                index = cart.length-1 - i;
-                if ids.include?(cart[index]["good_id"])
-                    cart.delete_at(index)
-                end
-            end
-            cookies[:cart] = cart.to_json
-        end
-=end
     end
 
 end

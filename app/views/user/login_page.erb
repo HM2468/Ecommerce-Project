@@ -1,16 +1,14 @@
 <script src="/javascripts/login.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/login.css">
-
 <%= render "/home/nav"%>
 
 <div id="login-main">
     <form id="login-form">
         <h1>Login</h1>
-        <p class="log-info">Username:</p>
+        <p class="log-info"><span>Username:</span></p>
         <input class="log-text" type="text", id="username" name="username" placeholder="Enter your username"/>
-        <p class="log-info">Password:</p>
+        <p class="log-info"><span>Password:</span></p>
         <input class="log-text" type="password", id="password" name="password" placeholder="Enter your password"/>
-
         <input id="login-submit" type="button" class="button" value="submit"/>
     </form>
 </div>

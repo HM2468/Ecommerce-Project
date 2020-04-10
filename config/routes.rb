@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'cart/add2cart'
   get 'cart/cart_page'
   get 'order/order_page'
-  post 'good/good_brief'
+  post 'order/check'
   get "home/main"
   get "home/records"
   root "home#main"

@@ -6,8 +6,23 @@ $(function(){
     showGoods(goods, goods_basic);
     showGoodsSummay(goods, goods_basic);
 
+    var checklist = [
+        {func:check_name, identify:"#order-last-name", err_identify:"#last-name-error"},
+        {func:check_name, identify:"#order-first-name", err_identify:"#first-name-error"},
+        {func:check_address, identify:"#order-address-detail", err_identify:"#address-detail-error"},
+        {func:check_zipcode, identify:"#order-zip-code", err_identify:"#zip-code-error"},
+        {func:check_email, identify:"#order-email", err_identify:"#address-email-error"}
+    ];
+
+    setFormListener(checklist);
+
     //After the request is responsed, the cookie order can be removed
     $(".goods-commit").click(function(){
+        var checkres = check_form(checklist);
+        if(checkres != ""){
+            alert(checkres);
+            return;
+        }
         var lastname = $("#order-last-name").val();
         var firstname = $("#order-first-name").val();
         var address = $("#order-address-detail").val();
@@ -33,7 +48,6 @@ $(function(){
             toCart();
         });
     });
-
 })
 
 

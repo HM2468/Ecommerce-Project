@@ -25,14 +25,28 @@ class UserController < ApplicationController
         else
             password = params[:password]
             email = params[:email]
-            newuser = User.new
-            newuser.username = username
-            newuser.password = Digest::MD5.hexdigest(password)
-            if newuser.save
-                log_in(newuser)
-            else
+
+            if (checkres = check_input("username", username, nil, 30, 1)) != ""
                 res[:status] = 2
-                res[:msg] = "Regist error, please try again later!"
+                res[:msg] = checkres
+            elsif (checkres = check_input("password", password, nil, 12, 4)) != ""
+                res[:status] = 3
+                res[:msg] = checkres
+            elsif (checkres = check_input("email", email, /^[0-9A-Za-z_]+@[0-9A-Za-z_.]+$/, 50, 1)) != ""
+                res[:status] = 4
+                res[:msg] = checkres
+            end
+
+            if res[:status] == 0
+                newuser = User.new
+                newuser.username = username
+                newuser.password = Digest::MD5.hexdigest(password)
+                if newuser.save
+                    log_in(newuser)
+                else
+                    res[:status] = 5
+                    res[:msg] = "Regist error, please try again later!"
+                end
             end
         end
         respond_to do |format|
@@ -80,7 +94,7 @@ class UserController < ApplicationController
             session[:user_id] = user.user_id
             cookies[:user_id] = user.user_id
             cookies[:username] = user.username
-        end  
+        end
 
 end
 

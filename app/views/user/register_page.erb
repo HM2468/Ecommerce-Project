@@ -1,18 +1,18 @@
+<script src="/javascripts/check.js"></script>
 <script src="/javascripts/register.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/register.css">
-
+<link rel="stylesheet" type="text/css" href="/css/check.css">
 <%= render "/home/nav"%>
 
 <div id="register-main">
     <form id="register-form">
         <h1>Sign Up</h1>
-        <p class="reg-info">Username:</p>
+        <p class="reg-info"><span>Username:</span><span id="uname-error" class="input-error-msg"></span></p>
         <input class="reg-text" type="text", id="username" name="username" placeholder="Enter your username"/>
-        <p class="reg-info">Password:</p>
+        <p class="reg-info"><span>Password:</span><span id="upass-error" class="input-error-msg"></span></p>
         <input class="reg-text" type="password", id="password" name="password" placeholder="Enter your password"/>
-        <p class="reg-info">Email:</p>
+        <p class="reg-info"><span>Email:</span><span id="email-error" class="input-error-msg"></span></p>
         <input class="reg-text" type="text", id="email" name="email" placeholder="Enter your email address"/>
-
         <input id="reg-submit" type="button" class="button" value="submit"/>
     </form>
 </div>
