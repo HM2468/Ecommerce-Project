@@ -112,7 +112,7 @@ body{
 
 #good-detail-wrap{
     margin-top:30px;
-    min-height: 800px;
+    min-height: 400px;
     padding-bottom:1px;
 }
 
@@ -146,7 +146,7 @@ body{
     min-height:600px;
     display:none;
     background:rgb(255, 255, 255);
-    padding:auto;
+    padding-bottom:30px;
     border:1px rgb(238,238,238) solid;
 }
 

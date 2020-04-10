@@ -24,9 +24,10 @@ class OrderController < ApplicationController
                 res[:msg] = 'save order error, please try later!'
             else
                 del_cart_goods(goods)
+                res[:status] = 0
+                res[:msg] = "order saved successfully!"
             end
         end
-        res[:msg] = "order saved successfully!"
         respond_to do |format|
             format.json {render json:res.to_json}
         end
@@ -99,34 +100,24 @@ class OrderController < ApplicationController
         namelen = 30
         addresslen = 300
         res = {:status=>0, :msg=>""}
-        if !check_len(lastname, namelen) || !check_len(firstname, namelen)
+
+        if(checkres = check_input("name", lastname, nil, namelen, 1)) != ""
             res[:status] = 1
-            res[:msg] = "name length can't exceed #{namelen} characters!"
-        elsif !check_len(address, addresslen)
+            res[:msg] = checkres
+        elsif (checkres = check_input("name", firstname, nil, namelen, 1)) != ""
+            res[:status] = 1
+            res[:msg] = checkres
+        elsif (checkres = check_input("address", address, nil, addresslen, 1)) != ""
             res[:status] = 2
-            res[:msg] = "address length can't exceed #{addresslen} characters!"
-        elsif !check_zipcode(zipcode)
-            res[:status] = 3
-            res[:msg] = "the zip code is incorrect!"
-        elsif !check_email(email)
-            res[:status] = 4
-            res[:msg] = "the email format is incorrect!"
+            res[:msg] = checkres
+        elsif (checkres = check_input("zipcode", zipcode, /^[0-9a-zA-Z ]+$/, 30, 1)) != ""
+            res[:status] = 2
+            res[:msg] = checkres
+        elsif (checkres = check_input("email", email, /^[0-9A-Za-z_]+@[0-9A-Za-z_.]+$/, 50, 1)) != ""
+            res[:status] = 2
+            res[:msg] = checkres
         end
         return res
-    end
-
-    #check zipcode
-    def check_zipcode(zipcode)
-        return true
-    end
-
-    #check email format
-    def check_email(email)
-        return true
-    end
-
-    def check_len(str, max=50, min=1)
-        return str.length <= max || str.length > min
     end
 
     #del some goods of cart

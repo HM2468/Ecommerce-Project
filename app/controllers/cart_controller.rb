@@ -1,7 +1,7 @@
 
 
 class CartController < ApplicationController
-    
+    skip_before_action :verify_authenticity_token
     def add2cart
         user_id = session[:user_id]
         res = {:status=>0, :msg=>"Add to cart successfully!"}
@@ -32,9 +32,10 @@ class CartController < ApplicationController
     end
 
     def cart_page
-        if session[:user_id]
-            puts "当前是当做已登录用户处理，登录名是#{session[:user_id]}"
-            gon.goods = Cart.where(user_id: session[:user_id])
+        if log_in?()
+            user_id = get_user_id()
+            puts "当前是当做已登录用户处理，登录名是#{user_id}"
+            gon.goods = Cart.where(user_id: user_id)
         else
             puts "当前的参数是#{params[:goodlist]}"
             gon.goods = parse_order_goods(params[:goodlist])
@@ -42,6 +43,19 @@ class CartController < ApplicationController
         end
         ids = goods_id(gon.goods)
         gon.goods_basic = goods_basic(ids)
+    end
+
+    def delete_goods
+        res = {:status=>0, :msg=>""}
+        if !log_in?()
+            res[:status] = 1
+            res[:msg] = "Illegal operation"
+        elsif
+            Cart.where("user_id = #{get_user_id()} AND good_id IN (#{params[:ids].join(',')})").destroy_all
+        end
+        respond_to do |format|
+            format.json {render json:res.to_json}
+        end
     end
 end
 

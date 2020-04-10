@@ -31,13 +31,7 @@ function setGoodsListeners(selected, goods, goods_basic){
                 selected[gid] = true;
             }
         }
-        var selected_goods = []
-        for(var i = 0; i < goods.length; i++){
-            var good = goods[i];
-            if(selected[good.good_id]){
-                selected_goods.push(good)
-            }
-        }
+        var selected_goods = getSelectedGoods(goods, selected);
         showGoodsSummay(selected_goods, goods_basic)
     })
 }
@@ -53,10 +47,15 @@ function setAllSelected(selected, goods){
 //get goods brief data from server and display
 function showGoods(goods, goods_basic){
     if(goods.length == 0){
-        $(".empty-goods-info").css("display", "block");
+        showGoodsEmpty();
     } else {
         displayGoods(goods, goods_basic)
     }
+}
+
+//display empty cart
+function showGoodsEmpty(){
+    $(".empty-goods-info").css("display", "block");
 }
 
 //show goods list in cart
@@ -85,7 +84,7 @@ function displayGoods(goods, goods_basic){
                             '<span class="list-good col-total pink-color">￥$total</span>'+
                         '</p>';
                         unitstr = unitstr.replace("$cover", basic.cover);            
-            unitstr = unitstr.replace("$good_id", basic.id);
+            unitstr = unitstr.replace(/\$good_id/g, basic.id);
             unitstr = unitstr.replace("$titles", basic.titles);
             unitstr = unitstr.replace("$price", basic.price);
             unitstr = unitstr.replace("$num", num);
@@ -110,6 +109,18 @@ function getSelectedGoods(goods, selected){
     return targoods;
 }
 
+//get user selected goods id
+function getSelectedGoodsId(selected){
+    var ids = [];
+    var keys = Object.keys(selected);
+    for(var i = 0; i < keys.length; i++){
+        var key = keys[i];
+        if(key != "all"){
+            ids.push(parseInt(key))
+        }
+    }
+    return ids;
+}
 
 //count total price
 function totalPrice(goods, goods_basic){
@@ -136,6 +147,30 @@ function showGoodsSummay(goods, goods_basic){
     $(".goods-counts-val").html(count)
 }
 
+//delete goods in the good list
+function deletePageGoods(ids, goods, selected){
+    var items = $(".goods-list").children();
+    //delete page content
+    for(var i = 0; i < items.length; i++){
+        var item = items[i];
+        var gid = parseInt($(item).attr("gid"));
+        if(ids.indexOf(gid) != -1){
+            $(item).remove();
+        }
+    }
+    //delete data
+    for(var i = 0; i < goods.length; i++){
+        var gid = goods[i].good_id;
+        if(selected[gid]){
+            delete selected[gid];
+            goods.splice(i, 1);
+            i--;
+        }
+    }
+    if(goods.length == 0){
+        showGoodsEmpty();
+    }
+}
 
 
 

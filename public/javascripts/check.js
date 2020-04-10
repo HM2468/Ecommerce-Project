@@ -16,7 +16,7 @@ function check_password(str){
 }
 
 function check_zipcode(str){
-    reg = /^[0-9A-Za-z]+$/
+    reg = /^[0-9A-Za-z ]+$/
     var res = check_input("zipcode", str, reg, 20, 5);
     if(res != ""){
         return "zipcode format is incorrect!";

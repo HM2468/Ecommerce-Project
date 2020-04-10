@@ -112,6 +112,10 @@ function toCart(){
     window.location.href = "/cart/cart_page?"+$.param(data);
 }
 
+//check if user is login
+function isLogin(){
+    return !!$.cookie("username")
+}
 
 
 

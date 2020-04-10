@@ -33,7 +33,11 @@ class ApplicationController < ActionController::Base
     end
 
     def log_in?
-        !!session[:user_id]
+        return !!session[:user_id]
+    end
+
+    def get_user_id
+        return session[:user_id]
     end
 
     def check_input(name, str, reg, maxlen=30, minlen=0)

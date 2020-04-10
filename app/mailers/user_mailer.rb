@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-    default from: 'coursetest168@gmail.com'
+    default from: 'zjnear@gmail.com'
 
     def order_email(lastname, firstname, order_id, money, email)
         @lastname = lastname

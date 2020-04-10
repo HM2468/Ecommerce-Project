@@ -18,14 +18,40 @@ $(function(){
         orderGoods(selectedgoods);
     });
 
-    //测试cookie问题
-    $.removeCookie("zzj")
-    var val = JSON.stringify([{good_id:121212,num:1854}, {good_id:435353,num:114}])
-    console.log("cart当前的cookie ", document.cookie)
-    console.log("用jquery获取的cookie ", $.cookie("zzj"))
-    $.cookie("zzj", val, {path:"/"})
-    console.log("cart修改后的cookie ", document.cookie)
-    console.log("用jquery获取的cookie ", $.cookie("zzj"))
+    $(".goods-delete-text").click(function(){
+        deleteSelectedCartGoods();
+    })
+
+    //delete some goods in the cart
+    function deleteSelectedCartGoods(){
+        var ids = getSelectedGoodsId(selected);
+        if(ids.length == 0){
+            return;
+        }
+        if(isLogin()){
+            $.post("/cart/delete_goods", {ids:ids}, function(data, status){
+                if(status != 'success'){
+                    alert("Server Error!");
+                    return;
+                }
+                if(data.status != 0){
+                    alert(data.msg);
+                    return;
+                }
+                updatePageAfterDelete(ids);
+            });
+        } else {
+            deleteCookieCartGoods(ids);
+            updatePageAfterDelete(ids);
+        }
+    }
+
+    //update page display after user delete some goods in the cart
+    function updatePageAfterDelete(ids){
+        deletePageGoods(ids, goods, selected);
+        var selected_goods = getSelectedGoods(goods, selected);
+        showGoodsSummay(selected_goods, goods_basic)
+    }
 })
 
 
