@@ -38,6 +38,18 @@ function check_email(str){
     return "";
 }
 
+function check_province(str){
+    return "";
+}
+
+function check_city(str){
+    return "";
+}
+
+function check_constent(sid1, sid2){
+    return $(sid1).val() == $(sid2).val();
+}
+
 /**
  * check user input by reg and length
  * @param {*} str user input str
@@ -61,25 +73,34 @@ function check_input(name, str, reg, maxlen=100, minlen=0){
 function setFormListener(checklist){
     for(var i = 0; i < checklist.length; i++){
         var cfg = checklist[i];
-        setSingleListener(cfg.identify, cfg.err_identify, cfg.func);
+        setSingleListener(cfg);
     }
 }
 
-function setSingleListener(identify, err_identify, func){
-    $(identify).blur(function(){
-        var res = func($(identify).val());
-        $(err_identify).html(res);
-        $(err_identify).css("visibility", res != "" ? "visible" : "hidden");
+function setSingleListener(cfg){
+    $(cfg.identify).blur(function(){
+        check_show_error(cfg);
     });
+}
+
+function check_show_error(cfg){
+    var res = "";
+    if(cfg.func == check_constent){
+        var issame = check_constent(cfg.identify, cfg.ref_identify);
+        res = issame ? "" : cfg.name + " input is not constent!";
+    } else {
+        res = cfg.func($(cfg.identify).val());
+    }
+    $(cfg.err_identify).html(res);
+    $(cfg.err_identify).css("visibility", res != "" ? "visible" : "hidden");
+    return res;
 }
 
 function check_form(checklist){
     var msg = ""
     for(var i = 0; i < checklist.length; i++){
         var cfg = checklist[i];
-        var res = cfg.func($(cfg.identify).val());
-        $(cfg.err_identify).html(res);
-        $(cfg.err_identify).css("visibility", res != "" ? "visible" : "hidden");
+        var res = check_show_error(cfg);
         if(msg == "" && res != ""){
             msg = res;
             $(cfg.identify).focus();
@@ -88,6 +109,14 @@ function check_form(checklist){
     return msg;
 }
 
+function form_pack(checklist){
+    var data = {};
+    for(var i = 0; i < checklist.length; i++){
+        var cfg = checklist[i];
+        data[cfg.name] = $(cfg.identify).val()
+    }
+    return data;
+}
 
 
 

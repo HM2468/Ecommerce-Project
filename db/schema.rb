@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_17_040059) do
+ActiveRecord::Schema.define(version: 2020_04_20_200934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 2020_04_17_040059) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "province"
+    t.text "city"
   end
 
   create_table "properties", force: :cascade do |t|
@@ -68,6 +70,19 @@ ActiveRecord::Schema.define(version: 2020_04_17_040059) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["good_id"], name: "index_properties_on_good_id"
+  end
+
+  create_table "userbasics", id: false, force: :cascade do |t|
+    t.text "lastname"
+    t.text "firstname"
+    t.text "province"
+    t.text "city"
+    t.text "address"
+    t.text "zipcode"
+    t.text "email"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", id: false, force: :cascade do |t|

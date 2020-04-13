@@ -3,11 +3,7 @@
 <link rel="stylesheet" type="text/css" href="/css/nav.css">
 
 <div id="home-header">
-     
-    <a href="/"><span id="logo-text1">Phone Star</span></a> 
-   
-    <a href="https://github.com/HM2468/awad"> <span id="logo-text2">Github source code</span></a>
-    
+    <a href="/"><span id="logo-text">Phone Star</span></a>
     <form method="get", action="/good/search_page">
         <input id="search-words" name="keywords"/>
         <input id="search-btn" class="button" type="submit" value=""/>
@@ -18,12 +14,15 @@
         <a href="/user/register_page"><span id="reg-enter" class="enter-text button">sign up</span></a>
     </div>
     <div id="login-user" class="login-status">
-        <a href=""><span id="curuser" class="enter-text button">username</span></a>
+        <a href="/user/center"><span id="curuser" class="enter-text button">username</span></a>
         <span class="enter-text item-bar">|</span>
         <span id="logout" class="enter-text button">Logout</span>
     </div>
-    <div id="cart-icon" class="button"></div>
-    <span id="cart-text">cart</span>
+    <a href="javascript:toCart();">
+        <div id="cart-icon" class="button"></div>
+        <span id="cart-text">cart</span>
+    </a>
+
 </div>
 
 

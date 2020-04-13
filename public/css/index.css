@@ -36,3 +36,7 @@ a:hover{
 .pink-color{
     color:var(--pink-color);
 }
+
+.template{
+    display:none;
+}

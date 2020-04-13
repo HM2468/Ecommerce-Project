@@ -1,17 +1,75 @@
 class UserController < ApplicationController
     skip_before_action :verify_authenticity_token
-    #获取某一个商品的详细信息
-    def detail_data
-        good_id = params[:good_id]
-        puts "客户端商品id是#{good_id}"
-        record = Good.find(good_id)
-        good_properties = get_good_config(good_id)
-        data = {"good"=>record, "properties"=>good_properties}
+
+    def center
+        user_id = get_user_id()
+        gon.page = @page = params[:page] || "basic"
+        gon.act = @act = params[:act] || "show"
+        if @page == "basic"
+            gon.basic = Userbasic.where(user_id:user_id)[0]
+        elsif @page == "orders"
+            gon.orders = Order.where(user_id:user_id)
+        end
+        puts "page:#{@page}, act:#{@act}, basic:#{gon.basic.to_json}"
+    end
+
+    def update_basic
+        res = {:status=>0, :msg=>""}
+        if (checkres = check_user_basic(params)) != ""
+            res[:status] = 1
+            res[:msg] = checkres
+        elsif
+            if Userbasic.where(user_id:get_user_id()).length == 0
+                record = Userbasic.new
+                record.user_id=get_user_id()
+                record.lastname=params[:lastname]
+                record.firstname=params[:firstname]
+                record.province=params[:province]
+                record.city=params[:city]
+                record.address=params[:address]
+                record.zipcode=params[:zipcode]
+                record.email=params[:email]
+                if !record.save
+                    res[:status] = 2
+                    res[:status] = "update data error"
+                end
+            elsif
+                Userbasic.update(
+                    get_user_id(), 
+                    :lastname=>params[:lastname], 
+                    :firstname=>params[:firstname],
+                    :province=>params[:province],
+                    :city=>params[:city],
+                    :address=>params[:address],
+                    :zipcode=>params[:zipcode],
+                    :email=>params[:email]
+                )
+            end 
+        end
         respond_to do |format|
-            format.json {render json:data.to_json}
+            format.json {render json:res.to_json}
         end
     end
 
+    def change_pwd
+        res = {:status=>0, :msg=>"change password successfully!"}
+        if !log_in?()
+            res[:status] = 1
+            res[:msg] = "invalid operation!"
+        else
+            password = params[:password]
+            checkres = check_input("password", password, nil, 12, 4)
+            if checkres != ""
+                res[:status] = 2
+                res[:msg] = checkres
+            elsif
+                User.update(get_user_id(), :password=>Digest::MD5.hexdigest(password))
+            end 
+        end
+        respond_to do |format|
+            format.json {render json:res.to_json}
+        end
+    end
 
     #register
     def register
@@ -21,7 +79,7 @@ class UserController < ApplicationController
         if User.where("username=?",username).length != 0
             res[:status] = 1
             res[:msg] = "Username is already registered!"
-            puts "用户名已经存在"
+            puts res[:msg]
         else
             password = params[:password]
             email = params[:email]
@@ -96,6 +154,29 @@ class UserController < ApplicationController
             cookies[:username] = user.username
         end
 
+        def check_user_basic(basic)
+            if basic[:firstname] && (res = check_input("firstname", basic[:firstname], nil, 30, 1)) != ""
+                return res;
+            end
+            if basic[:lastname] && (res = check_input("lastname", basic[:lastname], nil, 30, 1)) != ""
+                return res;
+            end
+            if basic[:city] && !check_city(basic[:city])
+                return "city does not exist!"
+            end
+            if basic[:province] && !check_province(basic[:province])
+                return "province does not exist!"
+            end
+            return ""
+        end
+
+        def check_city(str)
+            return true
+        end
+
+        def check_province(str)
+            return true
+        end
 end
 
 

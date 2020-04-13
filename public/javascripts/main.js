@@ -18,6 +18,12 @@ $(function(){
 
     InitAndStartMovieImgs(movie_goods);
 
+    checkMaskShow();
+
+    $("#close-mask-btn").click(function(){
+        $("#mask-box").css("display", "none");
+        $.cookie("stateviewed", "yes", {path:"/"})
+    });
 
 
     function InitAndStartMovieImgs(images){
@@ -74,6 +80,13 @@ $(function(){
         }
     }
 
+    function checkMaskShow(){
+        if($.cookie("stateviewed") != "yes"){
+            $("#mask-box").css("display", "block");
+        } else {
+            $("#mask-box").css("display", "none");
+        }
+    }
 })
 
 

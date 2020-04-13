@@ -47,13 +47,15 @@
 }
 .main-display-header{
     height:40px;
-    background:rgb(18, 177, 12);
+    /* background:rgb(18, 177, 12); */
+    background:var(--theme-color);
     line-height:40px;
     font-size:15px;
     padding-left:10px;
     font-weight: bold;
     padding-top:2px;
-    color:rgba(255,255,255,0.7);
+    /* color:rgba(255,255,255,0.7); */
+    color:white;
     margin-bottom:5px;
 }
 .main-good-list{
@@ -82,12 +84,44 @@
     cursor:pointer;
 }
 
-
-
-
-
-
-
+#mask-box{
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    position: fixed;
+    background: rgb(0,0,0,0.8);
+    overflow: hidden;
+}
+#statement{
+    width:600px;
+    margin:auto;
+    margin-top:100px;
+    min-height:400px;
+    color:white;
+    /* background: white; */
+    /* display:none; */
+}
+#statement h1{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size:30px;
+}
+#githublink{
+    color:var(--pink-color);
+    text-decoration: underline;
+}
+#close-mask-btn{
+    display:block;
+    width:130px;
+    height:40px;
+    margin:auto;
+    border:1px white solid;
+    background: none;
+    color:white;
+    cursor: pointer;
+    margin-top:30px;
+}
 
 
 

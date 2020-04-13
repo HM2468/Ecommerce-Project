@@ -6,30 +6,17 @@
     position:relative;
 }
 
-#logo-text1{
+#logo-text{
     display:block;
     position: absolute;
     top:0px;
     left:20px;
     height:60px;
     line-height:60px;
-    font-size:30px;
+    font-size:20px;
     font-weight:bold;
-    /* background-color:white; */
     color:white;
 }
-
-#logo-text2{
-    position: absolute;
-    top:0px;
-    left:20px;
-    line-height:120px;
-    font-size:15px;
-    font-weight:bold;
-    color:rgb(80, 82, 76);
-    text-decoration:underline;
-}
-
 
 #search-words{
     position: absolute;

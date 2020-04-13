@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    before_action :record_visit
+    before_action :record_visit, :set_cache_headers
 
     def goods_basic(ids)
         if ids.length == 0
@@ -61,5 +61,11 @@ class ApplicationController < ActionController::Base
             record.path = request.path
             record.timestr = Time.at record.time
             record.save
+        end
+
+        def set_cache_headers
+            response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+            response.headers["Pragma"] = "no-cache"
+            response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
         end
 end

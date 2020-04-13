@@ -114,10 +114,66 @@ function toCart(){
 
 //check if user is login
 function isLogin(){
-    return !!$.cookie("username")
+    return !!$.cookie("username");
 }
 
+/**
+ * get date like "2020-12-01"
+ * @param {*} timestamp 
+ */
+function getFullDate(timestamp){
+    var time = new Date(timestamp*1000);
+    var year = time.getFullYear();
+    var month = time.getMonth();
+    if((month+"").length < 2){
+        month = "0" + month;
+    }
+    var date = time.getDate();
+    if((date+"").length < 2){
+        date = "0" + date;
+    }
+    return year + "-" + month + "-" + date;
+}
 
+/**
+ * render a list automatically
+ * @param {*} container_sid container select identify
+ * @param {*} template_sid template select identify
+ * @param {*} list data list
+ */
+function renderList(container_sid, template_sid, list){
+    var template = getTemplate(template_sid);
+    console.log("标志是",template_sid,"内容是",template)
+    for(var i = 0; i < list.length; i++){
+        var data = list[i];
+        var item = assignVal(template, data);
+        $(container_sid).append(item);
+    }
+}
+
+/**
+ * get a template html by select identify
+ * @param {*} identify template identify
+ */
+function getTemplate(identify){
+    return $(identify).clone().css("display", "block").prop("outerHTML");
+}
+
+/**
+ * assign variable value to a template html
+ * @param {*} template template html
+ * @param {*} data single item data
+ */
+function assignVal(template, data){
+    var keys = Object.keys(data);
+    for(var i = 0; i < keys.length; i++){
+        var key = keys[i];
+        var val = data[key];
+        var regExp = new RegExp("#"+key, "g");
+        template = template.replace(regExp, val)
+    }
+    return template;
+}
 
 
 

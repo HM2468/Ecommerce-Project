@@ -2,17 +2,14 @@
 
 $(function(){
     check_login();
-    $("#curuser").click(function(){
-        alert("进入个人中心");
-    })
 
     $("#logout").click(function(){
         $.get("/user/logout", function(data, status){
             if(status == 'success'){
                 alert("Logout Successfully!")
-                $.removeCookie("username", {path:"/"})
-                $("#curuser").html("")
-                check_login()
+                $.removeCookie("username", {path:"/"});
+                $("#curuser").html("");
+                window.location.href = "/";
             }else{
                 alert("Logout Error!")
             }
