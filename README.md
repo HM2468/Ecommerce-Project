@@ -20,3 +20,17 @@
   account:coursetest168@gmail.com
   password:Ct123456
 
+To run this application:
+
+'''
+$ bundle install
+
+//In order to successfully migrate DB, install PostgresSQL first
+$ rails db:migrate
+
+//import data from CSV to database
+$ rake data:importdata
+
+//start 
+$ rails s
+'''
