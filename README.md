@@ -22,7 +22,7 @@
 
 To run this application:
 
-'''
+```
 $ bundle install
 
 //In order to successfully migrate DB, install PostgresSQL first
@@ -33,4 +33,4 @@ $ rake data:importdata
 
 //start 
 $ rails s
-'''
+```
