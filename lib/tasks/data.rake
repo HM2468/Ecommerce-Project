@@ -1,9 +1,12 @@
+
 =begin
-namespace :bears do
+
+namespace :data do
   desc "TODO"
-  task import_data: :environment do
+  task importdata: :environment do
   end
 end
+
 =end
 #file location
 file_goods = "lib/assets/goods.csv"
@@ -96,9 +99,9 @@ users_import = Proc.new{
 #data import from here
 require 'csv'
 require 'date'
-namespace :bears do
-  desc "Import data from goods.csv"
-  task import_data: :environment do
+namespace :data do
+  desc "Import data from CSV files"
+  task importdata: :environment do
 
     Property.destroy_all
     Good.destroy_all
