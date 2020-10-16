@@ -20,7 +20,7 @@
   account:coursetest168@gmail.com
   password:Ct123456
 
-To run this application:
+## To run this application:
 
 ```
 $ bundle install
